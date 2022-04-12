@@ -17,6 +17,7 @@ import QuestionState from './Context/questions/QuestionState';
 import Wishlist from './components/Wishlist';
 import GMap from './components/Map';
 import Images from './components/Images';
+import Scanner from './components/Scanner';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/wishlist" element={<Wishlist />} />
                 {/* <Route path="/map" element={<GMap />}></Route> */}
                 <Route path="/images" element={<Images />} />
+                <Route path="/Scanner" element={<Scanner/>}/>
               </Routes>
             </QuestionState>
           </PlaceState>

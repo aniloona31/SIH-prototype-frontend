@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import PlaceContext from './PlaceContext'
 
 function PlaceState(props) {
@@ -8,6 +9,7 @@ function PlaceState(props) {
     const [likeAndDislike, setLikeAndDislike] = useState([]);
 
     const url = "http://localhost:8080";
+    const navigate = useNavigate();
 
 
     const getAllPlaces = async() => {
@@ -30,9 +32,9 @@ function PlaceState(props) {
     }
 
     //get places of particuler category
-    const getPlacesByCategory = async(category) => {
+    const getPlacesByState = async(state) => {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${url}/place/${category}`,{
+        const response = await fetch(`${url}/place/${state}`,{
             method : "GET",
             headers : {
                 "Content-Type" : "application/json",
@@ -43,12 +45,15 @@ function PlaceState(props) {
         // .then((response) => {
         //     setPlaces(response);
         // }).catch(error => console.log(error));
+        // console.log(response)
         if(response.status === 200){
             const json = await response.json();
             setPlaces(json);
         }
         else{
-            let res = await response.json();
+            if(response.status === 500){
+                navigate("/login");
+            }
             //give notification of error.
         }
     }
@@ -94,7 +99,7 @@ function PlaceState(props) {
 
 
     return (
-        <PlaceContext.Provider value={{places,getAllPlaces,getPlacesByCategory,getLikedAndDisliked,likeAndDislike,setLikeAndDislike,vote}}>
+        <PlaceContext.Provider value={{places,getAllPlaces,getPlacesByState,getLikedAndDisliked,likeAndDislike,setLikeAndDislike,vote}}>
             {props.children}
         </PlaceContext.Provider>
     )

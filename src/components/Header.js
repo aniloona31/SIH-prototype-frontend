@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import SubCategory from './SubCategory';
+import ScannerButton from './ScannerButton';
+import Slider from './Slider';
+import Steps from './Steps';
+// import SubCategory from './SubCategory';
 
 function Header() {
 
@@ -58,13 +61,13 @@ function Header() {
                         <div className="relative flex items-center justify-between h-16">
                             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                 <div className="flex items-center text-gray-100 font-bold font-mono text-xl">
-                                    Place Finder
+                                    Ghumantu
                                 </div>
                                 <div className="hidden sm:block sm:ml-6">
                                     <div className="flex space-x-4">
                                         <Link to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</Link>
 
-                                        <Link to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</Link>
+                                        {/* <Link to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</Link> */}
                                         <button onClick={goToQuestions} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Questions</button>
                                     </div>
                                 </div>
@@ -109,7 +112,14 @@ function Header() {
                     </div>
                 </nav>
             </div>
-            {(location.pathname === "/" || location.pathname === "/Tourism" || location.pathname === "/Party" || location.pathname === "/Basic" || location.pathname === "/Food" || location.pathname === "/Shopping" || location.pathname === "/Grocery" || location.pathname === "/Electronics" || location.pathname === "/Gedi" ) ? <SubCategory /> : <></>}
+            <div className='mt-6'>
+                {location.pathname === "/" ? <Slider/> : <></>}
+            </div>
+            <div className='flex flex-row justify-center'>
+            {location.pathname === "/" ? <ScannerButton  /> : <></>}
+            </div>
+            {location.pathname === "/" ? <Steps  /> : <></>}
+            {/* {(location.pathname === "/" || location.pathname === "/Tourism" || location.pathname === "/Party" || location.pathname === "/Basic" || location.pathname === "/Food" || location.pathname === "/Shopping" || location.pathname === "/Grocery" || location.pathname === "/Electronics" || location.pathname === "/Gedi" ) ? <SubCategory /> : <></>} */}
         </>
     )
 }

@@ -70,6 +70,9 @@ function Place(props) {
         }
     }
 
+    const goToPayment = () =>{
+        console.log("issue ticket");
+    }
     const changeLike = (type) => {
         if (type == "up" && down === false) {
             setUp(!up);
@@ -128,6 +131,7 @@ function Place(props) {
                                 <div className="w-full lg:w-1/5 mt-6 lg:mt-0 lg:px-4 text-center md:text-left">
                                     <button onClick={goToPhotos} className=" text-black bg-indigo-200 tracking-wide hover:shadow-lg mb-2 border border-solid rounded  w-1/3 lg:w-full py-2">Images</button>
                                     <button onClick={goToReviews} className=" text-black bg-indigo-200 tracking-wide hover:shadow-lg border border-solid rounded  w-1/3 lg:w-full py-2">Reviews</button>
+                                    <button onClick={goToPayment} className=" text-black bg-indigo-200 tracking-wide hover:shadow-lg border border-solid rounded  w-1/3 lg:w-full py-2 mt-2">Book Ticket</button>
                                     <button onClick={() => changeLike("up")}>{(up === false) ? <i className={`far flex mx-4 mt-4 cursor-pointer text-indigo-400 fa-thumbs-up fa-lg`}></i> : <i className="fas fa-thumbs-up mx-4 text-indigo-400 mt-4 fa-lg cursor-pointer"></i>}</button>
                                     <button onClick={() => changeLike("down")}>{(down === false) ? <i className={`far fa-thumbs-down flex text-indigo-400 cursor-pointer fa-lg`}></i> : <i className="fas fa-thumbs-down text-indigo-400 fa-lg cursor-pointer"></i>}</button>
                                 </div>

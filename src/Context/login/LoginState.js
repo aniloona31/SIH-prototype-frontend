@@ -17,7 +17,7 @@ const LoginState = (props) => {
     const googleLogin = async (res) => {
         //console.log("i am here")
         console.log(res);
-        const url = "http://localhost:8080/Placefinder/oauth";
+        const url = "http://localhost:8080/login";
         const response = await fetch(url, {
             method: "POST",
             headers: {
